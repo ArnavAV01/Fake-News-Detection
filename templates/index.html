@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Classification</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="mb-4">Enter News Article</h2>
+        <form method="post">
+            <div class="form-group">
+                <label for="newsArticle">News Article:</label>
+                <textarea class="form-control" id="newsArticle" name="news_article" rows="5" required>{{ request.form['news_article'] if request.form.get('news_article') else '' }}</textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Predict</button>
+        </form>
+        {% if prediction %}
+        <div class="mt-4">
+            <h3>This news is:</h3>
+            <p>{{ prediction }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
